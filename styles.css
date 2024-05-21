@@ -7,7 +7,8 @@ body {
     place-items: center;
     position: relative;
     text-align: center;
-    color: white; /* Added to ensure text color */
+    color: white;
+    overflow: hidden; /* Prevent overflow */
 }
 
 h2 {
@@ -23,14 +24,13 @@ h2 {
     background-color: red;
     position: absolute;
     top: 20px;
-    left: 55%;
+    left: 20px;
     display: inline-block;
     cursor: pointer;
     padding: 10px;
     border-radius: 4px;
     margin: 10px;
     z-index: 1; /* Lower the z-index to ensure it's below .hover-text */
-
 }
 
 .hover-container:nth-child(2) {
@@ -74,7 +74,7 @@ h2 {
     background-color: red;
     position: absolute;
     top: 50%;
-    left: 50%;
+    left: 38%;
     transform: translateY(-50%);
     display: inline-block;
     cursor: pointer;
@@ -169,10 +169,7 @@ h2 {
 .hover-container:nth-child(5) .hover-text {
     background-color: red;
     z-index: 3; /* Ensure .hover-text is above .hover-container:nth-child(5) */
-    }
-    
-    
-
+}
 
 .hover-container:nth-child(5)::after { /* after makes for the arrow color*/
     border-color: transparent red transparent transparent;
@@ -182,4 +179,26 @@ h2 {
     visibility: visible;
     opacity: 1;
     transform: translateX(0);
+}
+
+.Car-Image-container {
+    top: 5%;
+    right: 0%;
+    position: absolute;
+}   
+
+.Car-Image-container img {
+    width: 300px; /* Adjust width as needed */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.Tornado-Image-container {
+    top: 5%;
+    left: 0%;
+    position: absolute;
+}   
+
+.Tornado-Image-container img {
+    width: 300px; /* Adjust width as needed */
+    height: auto; /* Maintain aspect ratio */
 }
