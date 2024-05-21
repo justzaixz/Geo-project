@@ -1,0 +1,185 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+    background-color: black;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    position: relative;
+    text-align: center;
+    color: white; /* Added to ensure text color */
+}
+
+h2 {
+    margin-bottom: 20px;
+    top: 30%;
+    position: absolute;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* Apply different background colors to specific containers */
+.hover-container:nth-child(1) {
+    background-color: red;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: inline-block;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 4px;
+    margin: 10px;
+    z-index: 1; /* Lower the z-index to ensure it's below .hover-text */
+
+}
+
+.hover-container:nth-child(2) {
+    background-color: orange;
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: inline-block;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 4px;
+    margin: 10px;
+}
+
+.hover-container:nth-child(3) {
+    background-color: purple;
+    position: absolute;
+    bottom: 20px;
+    right: 20%;
+    display: inline-block;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 4px;
+    margin: 10px;
+}
+
+.hover-container:nth-child(4) {
+    background-color: darkcyan;
+    position: absolute;
+    bottom: 20px;
+    left: 20%;
+    display: inline-block;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 4px;
+    margin: 10px;
+}
+
+.hover-container:nth-child(5) {
+    background-color: red;
+    position: absolute;
+    top: 50%;
+    left: 38%;
+    transform: translateY(-50%);
+    display: inline-block;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 4px;
+    margin: 10px;
+}
+
+.hover-container {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    margin: 10px;
+    color: white; /* Text color for the question box */
+    transition: transform 0.5s, opacity 0.5s;
+    z-index: 2;
+}
+
+.hover-container::after {
+    content: "";
+    position: absolute;
+    top: calc(50% - 10px); /* Position it vertically centered relative to the question box */
+    left: calc(100% + 5px); /* Position it just to the right of the question box */
+    border-width: 10px; /* Controls the size of the arrow */
+    border-style: solid;
+    z-index: 2; /* Ensure it's above the tooltip */
+    opacity: 0; /* Initially hide the arrow */
+    transition: opacity 0.3s, transform 0.5s; /* Add transition for smoother appearance */
+}
+
+.hover-container:hover::after {
+    opacity: 1; /* Show the arrow on hover */
+}
+
+.hover-text {
+    visibility: hidden;
+    width: 220px; /* Slightly wider for better readability */
+    color: #fff;
+    text-align: center;
+    border-radius: 4px;
+    padding: 10px; /* More padding for better appearance */
+    position: absolute;
+    z-index: 3; /* Ensure it's above .hover-container */
+    top: calc(50% - 10px); /* Position the tooltip vertically centered */
+    left: calc(100% + 30px); /* Position the tooltip to the right of the question box */
+    opacity: 0;
+    transform: translateX(100%);
+    transition: transform 0.5s, opacity 0.5s;
+    font-family: sans-serif;
+}
+
+.hover-container:nth-child(1) .hover-text {
+    background-color: red;
+}
+
+.hover-container:nth-child(1)::after {
+    border-color: transparent red transparent transparent;
+}
+
+.hover-container:nth-child(2) .hover-text {
+    background-color: orange;
+}
+
+.hover-container:nth-child(2)::after {
+    border-color: transparent orange transparent transparent;
+}
+
+.hover-container:nth-child(3) .hover-text {
+    background-color: purple;
+    left: auto; /* Reset left positioning */
+    right: calc(100% + 30px); /* Position the tooltip to the left of the question box */
+    transform: translateX(-100%);
+}
+
+.hover-container:nth-child(3)::after {
+    left: auto; /* Reset left positioning */
+    right: calc(100% + 5px); /* Position it just to the left of the question box */
+    border-color: transparent transparent transparent purple; /* Match tooltip background */
+}
+
+.hover-container:nth-child(4) .hover-text {
+    background-color: darkcyan;
+}
+
+.hover-container:nth-child(4)::after {
+    border-color: transparent darkcyan transparent transparent;
+}
+
+.hover-container:nth-child(5) .hover-text {
+    background-color: red;
+    z-index: 3; /* Ensure .hover-text is above .hover-container:nth-child(5) */
+    }
+    
+    
+
+
+.hover-container:nth-child(5)::after { /* after makes for the arrow color*/
+    border-color: transparent red transparent transparent;
+}
+
+.hover-container:hover .hover-text {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(0);
+}
