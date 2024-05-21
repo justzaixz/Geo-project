@@ -74,7 +74,7 @@ h2 {
     background-color: red;
     position: absolute;
     top: 50%;
-    left: 38%;
+    left: 50%;
     transform: translateY(-50%);
     display: inline-block;
     cursor: pointer;
