@@ -2,13 +2,12 @@ body {
     font-family: 'Courier New', Courier, monospace;
     margin: 0;
     background-color: black;
-    height: 100vh;
+    height: 100%; /* Use 100% height for body */
     display: grid;
     place-items: center;
-    position: relative;
     text-align: center;
     color: white;
-    overflow: hidden; /* Prevent overflow */
+    overflow: hidden;
 }
 
 h2 {
@@ -19,110 +18,75 @@ h2 {
     font-family: 'Courier New', Courier, monospace;
 }
 
-/* Apply different background colors to specific containers */
-.hover-container:nth-child(1) {
-    background-color: red;
+.hover-container {
     position: absolute;
-    top: 20px;
-    left: 20px;
     display: inline-block;
     cursor: pointer;
     padding: 10px;
-    border-radius: 4px;
+    border-radius: 10px;
     margin: 10px;
-    z-index: 1; /* Lower the z-index to ensure it's below .hover-text */
+    color: white;
+    transition: transform 0.5s, opacity 0.5s;
 }
+
+
 
 .hover-container:nth-child(2) {
     background-color: orange;
-    position: absolute;
     top: 35%;
     left: 50%;
     transform: translateX(-50%);
-    display: inline-block;
-    cursor: pointer;
-    padding: 10px;
-    border-radius: 4px;
-    margin: 10px;
+    z-index: 3; /* Increase z-index to be above red container */
 }
 
 .hover-container:nth-child(3) {
     background-color: purple;
-    position: absolute;
-    bottom: 20px;
+    bottom: 110px;
     right: 20%;
-    display: inline-block;
-    cursor: pointer;
-    padding: 10px;
-    border-radius: 4px;
-    margin: 10px;
 }
 
 .hover-container:nth-child(4) {
     background-color: darkcyan;
-    position: absolute;
-    bottom: 20px;
-    left: 20%;
-    display: inline-block;
-    cursor: pointer;
-    padding: 10px;
-    border-radius: 4px;
-    margin: 10px;
+    bottom: 110px;
+    left: 13%;
 }
 
 .hover-container:nth-child(5) {
     background-color: red;
-    position: absolute;
-    top: 50%;
-    left: 38%;
+    top: 55%;
+    left: 50%;
     transform: translateY(-50%);
-    display: inline-block;
-    cursor: pointer;
-    padding: 10px;
-    border-radius: 4px;
-    margin: 10px;
-}
-
-.hover-container {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    margin: 10px;
-    color: white; /* Text color for the question box */
-    transition: transform 0.5s, opacity 0.5s;
-    z-index: 2;
+    z-index:1;
+    /*change here for position styling*/
 }
 
 .hover-container::after {
     content: "";
     position: absolute;
-    top: calc(50% - 10px); /* Position it vertically centered relative to the question box */
-    left: calc(100% + 5px); /* Position it just to the right of the question box */
-    border-width: 10px; /* Controls the size of the arrow */
+    top: calc(50% - 10px);
+    left: calc(100% + 5px);
+    border-width: 10px;
     border-style: solid;
-    z-index: 2; /* Ensure it's above the tooltip */
-    opacity: 0; /* Initially hide the arrow */
-    transition: opacity 0.3s, transform 0.5s; /* Add transition for smoother appearance */
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.5s;
 }
 
 .hover-container:hover::after {
-    opacity: 1; /* Show the arrow on hover */
+    opacity: 1;
 }
 
 .hover-text {
     visibility: hidden;
-    width: 220px; /* Slightly wider for better readability */
+    width: 320px;
     color: #fff;
     text-align: center;
     border-radius: 4px;
-    padding: 10px; /* More padding for better appearance */
+    padding: 10px;
     position: absolute;
-    z-index: 3; /* Ensure it's above .hover-container */
-    top: calc(50% - 10px); /* Position the tooltip vertically centered */
-    left: calc(100% + 30px); /* Position the tooltip to the right of the question box */
+    z-index: 4;
+    top: calc(50% - 10px);
+    left: calc(100% + 30px);
     opacity: 0;
     transform: translateX(100%);
     transition: transform 0.5s, opacity 0.5s;
@@ -139,6 +103,8 @@ h2 {
 
 .hover-container:nth-child(2) .hover-text {
     background-color: orange;
+    z-index: 4;
+    margin-bottom: 10px;
 }
 
 .hover-container:nth-child(2)::after {
@@ -147,15 +113,15 @@ h2 {
 
 .hover-container:nth-child(3) .hover-text {
     background-color: purple;
-    left: auto; /* Reset left positioning */
-    right: calc(100% + 30px); /* Position the tooltip to the left of the question box */
+    left: auto;
+    right: calc(100% + 30px);
     transform: translateX(-100%);
 }
 
 .hover-container:nth-child(3)::after {
-    left: auto; /* Reset left positioning */
-    right: calc(100% + 5px); /* Position it just to the left of the question box */
-    border-color: transparent transparent transparent purple; /* Match tooltip background */
+    left: auto;
+    right: calc(100% + 5px);
+    border-color: transparent transparent transparent purple;
 }
 
 .hover-container:nth-child(4) .hover-text {
@@ -168,10 +134,10 @@ h2 {
 
 .hover-container:nth-child(5) .hover-text {
     background-color: red;
-    z-index: 3; /* Ensure .hover-text is above .hover-container:nth-child(5) */
+    z-index: 3;
 }
 
-.hover-container:nth-child(5)::after { /* after makes for the arrow color*/
+.hover-container:nth-child(5)::after {
     border-color: transparent red transparent transparent;
 }
 
@@ -185,20 +151,20 @@ h2 {
     top: 5%;
     right: 0%;
     position: absolute;
-}   
+}
 
 .Car-Image-container img {
-    width: 300px; /* Adjust width as needed */
-    height: auto; /* Maintain aspect ratio */
+    width: 300px;
+    height: auto;
 }
 
 .Tornado-Image-container {
     top: 5%;
     left: 0%;
     position: absolute;
-}   
+}
 
 .Tornado-Image-container img {
-    width: 300px; /* Adjust width as needed */
-    height: auto; /* Maintain aspect ratio */
+    width: 300px;
+    height: auto;
 }
