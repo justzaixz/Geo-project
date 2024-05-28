@@ -2,7 +2,7 @@ body {
     font-family: 'Courier New', Courier, monospace;
     margin: 0;
     background-color: black;
-    height: 100%; /* Use 100% height for body */
+    height: 100%;
     display: grid;
     place-items: center;
     text-align: center;
@@ -12,64 +12,88 @@ body {
 
 h2 {
     margin-bottom: 20px;
-    top: 30%;
-    position: absolute;
     color: white;
     font-family: 'Courier New', Courier, monospace;
 }
 
 .hover-container {
-    position: absolute;
+    position: relative; /* Change to relative */
     display: inline-block;
     cursor: pointer;
     padding: 10px;
-    border-radius: 10px;
     margin: 10px;
     color: white;
     transition: transform 0.5s, opacity 0.5s;
-}
-
-
-
-.hover-container:nth-child(2) {
-    background-color: orange;
-    top: 35%;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 3; /* Increase z-index to be above red container */
-}
-
-.hover-container:nth-child(3) {
-    background-color: purple;
-    bottom: 110px;
-    right: 20%;
-}
-
-.hover-container:nth-child(4) {
-    background-color: darkcyan;
-    bottom: 110px;
-    left: 13%;
-}
-
-.hover-container:nth-child(5) {
-    background-color: red;
-    top: 55%;
-    left: 50%;
-    transform: translateY(-50%);
-    z-index:1;
-    /*change here for position styling*/
+    border: .25em solid var(--glow-color);
+    padding: 1em 3em;
+    font-size: 15px;
+    font-weight: bold;
+    background-color: var(--btn-color);
+    border-radius: 1em;
+    outline: none;
+    box-shadow: 0 0 1em .25em var(--glow-color),
+                0 0 4em 1em var(--glow-spread-color),
+                inset 0 0 .75em .25em var(--glow-color);
+    text-shadow: 0 0 .5em var(--glow-color);
+    transition: all 0.3s;
+    top:500%;
 }
 
 .hover-container::after {
     content: "";
     position: absolute;
-    top: calc(50% - 10px);
-    left: calc(100% + 5px);
+    top: 50%;
+    left: 100%;
+    transform: translateY(-50%);
     border-width: 10px;
     border-style: solid;
     z-index: 2;
     opacity: 0;
     transition: opacity 0.3s, transform 0.5s;
+}
+
+#container1 {
+    --glow-color: red;
+    --glow-spread-color: rgba(255, 0, 0, 0.781);
+    --enhanced-glow-color: rgb(255, 200, 200);
+    --btn-color: rgb(136, 30, 30);
+}
+
+#container1::after {
+    border-color: transparent red transparent transparent;
+}
+
+#container2 {
+    --glow-color: orange;
+    --glow-spread-color: rgba(255, 165, 0, 0.781);
+    --enhanced-glow-color: rgb(255, 228, 196);
+    --btn-color: rgb(255, 140, 0);
+}
+
+#container2::after {
+    border-color: transparent orange transparent transparent;
+}
+
+#container3 {
+    --glow-color: purple;
+    --glow-spread-color: rgba(128, 0, 128, 0.781);
+    --enhanced-glow-color: rgb(216, 191, 216);
+    --btn-color: rgb(75, 0, 130);
+}
+
+#container3::after {
+    border-color: transparent purple transparent transparent;
+}
+
+#container4 {
+    --glow-color: rgb(201, 181, 201);
+    --glow-spread-color: rgba(212, 200, 212, 0.781);
+    --enhanced-glow-color: rgb(216, 191, 216);
+    --btn-color: rgb(189, 160, 209);
+
+}
+#container4::after {
+    border-color: transparent grey transparent transparent;
 }
 
 .hover-container:hover::after {
@@ -78,78 +102,41 @@ h2 {
 
 .hover-text {
     visibility: hidden;
-    width: 320px;
-    color: #fff;
+    width: 550px;
+    color: white;
     text-align: center;
     border-radius: 4px;
     padding: 10px;
     position: absolute;
     z-index: 4;
-    top: calc(50% - 10px);
-    left: calc(100% + 30px);
+    top: 50%;
+    left: 130%;
+    transform: translateY(-50%) translateX(40px);
     opacity: 0;
-    transform: translateX(100%);
     transition: transform 0.5s, opacity 0.5s;
     font-family: sans-serif;
-}
-
-.hover-container:nth-child(1) .hover-text {
-    background-color: red;
-}
-
-.hover-container:nth-child(1)::after {
-    border-color: transparent red transparent transparent;
-}
-
-.hover-container:nth-child(2) .hover-text {
-    background-color: orange;
-    z-index: 4;
-    margin-bottom: 10px;
-}
-
-.hover-container:nth-child(2)::after {
-    border-color: transparent orange transparent transparent;
-}
-
-.hover-container:nth-child(3) .hover-text {
-    background-color: purple;
-    left: auto;
-    right: calc(100% + 30px);
-    transform: translateX(-100%);
-}
-
-.hover-container:nth-child(3)::after {
-    left: auto;
-    right: calc(100% + 5px);
-    border-color: transparent transparent transparent purple;
-}
-
-.hover-container:nth-child(4) .hover-text {
-    background-color: darkcyan;
-}
-
-.hover-container:nth-child(4)::after {
-    border-color: transparent darkcyan transparent transparent;
-}
-
-.hover-container:nth-child(5) .hover-text {
-    background-color: red;
-    z-index: 3;
-}
-
-.hover-container:nth-child(5)::after {
-    border-color: transparent red transparent transparent;
+    border: .25em solid var(--glow-color);
+    font-size: 15px;
+    font-weight: bold;
+    background-color: var(--btn-color);
+    border-radius: 1em;
+    outline: none;
+    box-shadow: 0 0 1em .25em var(--glow-color),
+                0 0 4em 1em var(--glow-spread-color),
+                inset 0 0 .75em .25em var(--glow-color);
+    text-shadow: 0 0 .5em var(--glow-color);
+    transition: all 0.3s;
 }
 
 .hover-container:hover .hover-text {
     visibility: visible;
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(-50%) translateX(0);
 }
 
 .Car-Image-container {
     top: 5%;
-    right: 0%;
+    right: 0;
     position: absolute;
 }
 
@@ -160,7 +147,7 @@ h2 {
 
 .Tornado-Image-container {
     top: 5%;
-    left: 0%;
+    left: 0;
     position: absolute;
 }
 
