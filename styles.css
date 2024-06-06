@@ -17,7 +17,7 @@ h2 {
 }
 
 .hover-container {
-    position: relative; /* Change to relative */
+    position: relative;
     display: inline-block;
     cursor: pointer;
     padding: 10px;
@@ -132,6 +132,19 @@ h2 {
     visibility: visible;
     opacity: 1;
     transform: translateY(-50%) translateX(0);
+}
+
+/* Targeting even containers to display hover text on the left */
+.hover-container:nth-of-type(even) .hover-text {
+    left: auto;
+    right: 130%;
+    transform: translateY(-50%) translateX(-40px);
+}
+
+.hover-container:nth-of-type(even)::after {
+    left: auto;
+    right: 115%;
+    border-color: transparent transparent transparent var(--glow-color);
 }
 
 .Car-Image-container {
